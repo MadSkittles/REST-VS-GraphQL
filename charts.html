@@ -94,6 +94,12 @@
                     type: 'pie',
                     radius: [0, '50%'],
                     center: ['80%', '50%'],
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: '{b}: {d}%'
+                        }
+                    },
                     tooltip: {
                         trigger: 'item',
                         formatter: "{b} : {c} ({d}%)"
