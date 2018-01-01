@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
+    <script src="http://echarts.baidu.com/asset/theme/dark.js"></script>
+</head>
+
+<body>
+    <div id="main" style="height:400px;"></div>
+
+    <script>
+        var myChart = echarts.init(document.getElementById('main'), 'dark');
+        var json = {
+            '企业云通信': { value: 18, color: '#dd6b66' },
+            'SDN': { value: 11, color: '#749a9f' },
+            '视频': { value: 14, color: '#e69d86' },
+            '物联网': { value: 14, color: '#8dc1a8' },
+            '云计算': { value: 25, color: '#ea7e52' },
+            '企业移动安全': { value: 4, color: '#eedd77' },
+            '移动开发工厂': { value: 3, color: '#72a373' },
+            'CloudCaaS': { value: 5, color: '#73b9bc' },
+            '大数据': { value: 4, color: '#7289ab' },
+            'IES': { value: 1, color: '#91ca8b' }
+        };
+        option = {
+            title: {
+                text: '开发者社区API分类统计',
+                textStyle: {
+                    fontSize: 24
+                },
+                left: 'center',
+                top: 10
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            grid: {
+                width: '60%',
+                left: 10,
+                bottom: 20,
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: Object.keys(json),
+                    axisLabel: {
+                        interval: 0,
+                    },
+                    axisTick: {
+                        alignWithLabel: true
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'API数量',
+                    type: 'bar',
+                    barWidth: '60%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{b} : {c}"
+                    },
+                    data: Object.keys(json).map(function (key) {
+                        return {
+                            name: key,
+                            value: json[key].value,
+                            itemStyle: {
+                                normal: {
+                                    color: json[key].color
+                                }
+                            }
+                        }
+                    })
+                },
+                {
+                    type: 'pie',
+                    radius: [0, '50%'],
+                    center: ['80%', '50%'],
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{b} : {c} ({d}%)"
+                    },
+                    data: Object.keys(json).map(function (key) {
+                        return {
+                            name: key,
+                            value: json[key].value,
+                            itemStyle: {
+                                normal: {
+                                    color: json[key].color
+                                }
+                            }
+                        }
+                    }),
+                    itemStyle: {}
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
