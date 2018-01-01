@@ -1,4 +1,4 @@
-### REST与GraphQL的对比
+### REST与GraphQL的对比
 
 ![REST与GraphQL的对比](./REST_vs_GraphQL1.png)
 
