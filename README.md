@@ -6,6 +6,6 @@
 
 ![REST与GraphQL的优缺点](./REST_vs_GraphQL.png)
 
-### [开发者社区API分类统计](./charts.html)
+### [开发者社区API分类统计](http://opvpyjlsy.bkt.clouddn.com/charts.html)
 
 ![开发者社区API分类统计](./charts.png)
